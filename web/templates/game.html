@@ -4,12 +4,23 @@
 		<title>Word Fun - the daily word game</title>
 		<meta charset="windows-1252">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="/static/css/styles.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="/static/js/game.js"></script>
 	</head>
 	<body>
 		Hello, {{user}},<br/>
+
 		Today's word definition is:<br>
 		{{definition}}<br>
-		<input type='text' name='guess'/><button onclick="$.get('/api/guess', {word:$('input[name=guess]').val()}, function(data){console.log(data)}, 'json')">Submit</button>
+
+		word length: <span id="word_len">{% if wordLen %} {{wordLen}} {% else %} ? {% endif %}</span><br>
+		{% if solved %}
+		<hr>
+		You have guessed the word in {{attempts}} attempts!
+		{% else %}
+		<input type='text' name='guess'/><button id="guess_submit">Submit</button>
+		{% endif %}
+		<div id="win">You guess it!</div>
 	</body>
 </html>

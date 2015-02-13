@@ -1,11 +1,10 @@
 import webapp2
 import json
 
+import config
 from models.user import User
 from models.word import Word
 from models.word_score import WordScore
-
-ATTEMPTS_FOR_CLUE = 3
 
 class GuessHandler(webapp2.RequestHandler):
 	def get(self):
@@ -38,7 +37,7 @@ class GuessHandler(webapp2.RequestHandler):
 			replyJson['solved'] = False
 			replyJson['attempts'] = score.attempts
 		
-		if score.attempts >= ATTEMPTS_FOR_CLUE:
+		if score.attempts >= config.ATTEMPTS_FOR_CLUE or replyJson['solved']:
 			replyJson['wordLen'] = word.len
 		
 		

@@ -10,6 +10,9 @@ class User(ndb.Model):
 	@staticmethod
 	def checkUser():
 		googleUser = users.get_current_user()
+		if not googleUser:
+			return False
+		
 		user = User.query(User.email == googleUser.email()).get()
 		if user:
 			return user

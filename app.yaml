@@ -11,7 +11,10 @@ handlers:
 
 #- url: /game
 #  script: web.pages.game.app
-  
+
+- url: /static
+  static_dir: web/static
+
 - url: /
   script: web.pages.index.app
   
