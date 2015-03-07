@@ -33,9 +33,11 @@ class User(ndb.Model):
 	def connect():
 		googleUser = users.get_current_user()
 		if googleUser:
-			user = User()
-			user.email = googleUser.email()
-			user.put()
+			user = User.query(User.email == googleUser.email()).get()
+			if not user:
+				user = User()
+				user.email = googleUser.email()
+				user.put()
 			return user
 
 		else:

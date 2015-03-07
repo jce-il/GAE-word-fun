@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block head %}
+	{{block.super}}
+	<script src="/static/js/index.js"></script>
+{%endblock%}
 
-<html>
-	<head>
-		<title>TODO supply a title</title>
-		<meta charset="windows-1252">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
-	<body>
-		{%if user %}
-		<a href="{{logoutUrl}}">Logout</a><br>
-		<button>Start game {{user}}</button>
-		{%else%}
-		<button onclick="location.href='{{loginUrl}}'">Connect</button>
-		{%endif%}
-	</body>
-</html>
+{% block content %}
+	
+	{%if user %}
+	<button id="start_game">Start game</button>
+	{%else%}
+	<div id="index_content">		
+		Welcome to Word Fun, a daily word guessing game. Connect to start playing.<br>
+		<img id="gconnect" src="/static/img/glogin.png" onclick="location.href='{{loginUrl}}'" alt="Connect with Google">
+	</div>
+	{%endif%}
+{%endblock%}

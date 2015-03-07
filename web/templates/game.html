@@ -1,26 +1,19 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Word Fun - the daily word game</title>
-		<meta charset="windows-1252">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="/static/css/styles.css"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="/static/js/game.js"></script>
-	</head>
-	<body>
-		Hello, {{user}},<br/>
+{% extends "base.html" %}
+{% block head %}
+	{{block.super}}
+	<script src="/static/js/game.js"></script>
+{%endblock%}
 
-		Today's word definition is:<br>
-		{{definition}}<br>
+{% block content %}	
+	Today's word definition is:<br>
+	<span id='definition'>{{definition}}</span><br><br>
 
-		word length: <span id="word_len">{% if wordLen %} {{wordLen}} {% else %} ? {% endif %}</span><br>
-		{% if solved %}
-		<hr>
-		You have guessed the word in {{attempts}} attempts!
-		{% else %}
-		<input type='text' name='guess'/><button id="guess_submit">Submit</button>
-		{% endif %}
-		<div id="win">You guess it!</div>
-	</body>
-</html>
+	word length: <span id="word_len">{% if wordLen %} {{wordLen}} {% else %} ? {% endif %}</span><br>
+	{% if solved %}
+	<hr>
+	You have guessed the word in {{attempts}} attempts!
+	{% else %}
+	<input type='text' id='guess_field' name='guess'/><button id="guess_submit">Submit</button><span id='wrong'>Wrong</span>
+	{% endif %}
+	<div id="youwin">You guess it!</div>
+{%endblock%}
