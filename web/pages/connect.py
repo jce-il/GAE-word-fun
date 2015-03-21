@@ -12,15 +12,6 @@ class IndexHandler(webapp2.RequestHandler):
 			self.redirect('/')
 		else:
 			self.redirect('/game')
-		
-#		template_params['user'] = user.email()
-#		
-#		word = Word.todaysWord()
-#		
-#		template_params['definition'] = word.definition
-#		
-#		html = template.render("web/templates/game.html", template_params)
-#		self.response.write(html)
 
 app = webapp2.WSGIApplication([
 	('/connect', IndexHandler)
