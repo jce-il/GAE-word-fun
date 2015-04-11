@@ -10,6 +10,10 @@
 		{% endblock %}
 	</head>
 	<body>
+		<div id="nav_header">
+			<a href="/">Home</a>
+			<a href="/scoreboard">Scoreboard</a>
+		</div>
 		<div id="user_header">			
 		{% if user %}
 			Hi, {{user}} <a href="{{logoutUrl}}">Logout</a>

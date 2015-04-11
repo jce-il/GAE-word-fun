@@ -21,6 +21,16 @@ class Word(ndb.Model):
 	definition = ndb.TextProperty()
 	len = ndb.ComputedProperty(lambda self: len(self.word))		#creates a field from the word length automatically
 	
+	@staticmethod
+	def allWords():
+		return Word.query()
+	
+	#returns a word matching the string passed, None is word doesnt exist
+	@staticmethod
+	def wordByString(str):
+		word = Word.query(Word.word == str).get()
+		return word
+		
 	"""
 	This function gets the word of the day from the databse, or gets one from the api if no word for today was found
 	api docs: http://developer.wordnik.com/docs.html#!/words/getWordOfTheDay_get_1

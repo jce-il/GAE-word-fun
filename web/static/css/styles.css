@@ -1,3 +1,7 @@
+body {
+	background: rgb(218, 238, 255);
+}
+
 #user_header {
 	background:#f2e8b7;
 }
@@ -33,3 +37,5 @@
 	display:none;
 	color:#F00;
 }
+
+/* Scoreboard */
