@@ -9,9 +9,6 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-#- url: /game
-#  script: web.pages.game.app
-
 - url: /static
   static_dir: web/static
 
@@ -21,11 +18,18 @@ handlers:
 - url: /api/(.*)
   script: api.\1.app
 
-- url: /scoreboard/(.*)
+- url: /scoreboard[\/]?(.*)
   script: web.pages.scoreboard.app
 
+- url: /game
+  script: web.pages.game.app
+  
+- url: /connect
+  script: web.pages.connect.app
+  
+#cacthes everything that wasn't cought until now
 - url: /(.*)
-  script: web.pages.\1.app
+  script: web.pages.four_o_four.app
   
 
 
